@@ -5,7 +5,7 @@ const calcularBtn = document.getElementById('calcularBtn')
 const montoPrestamoInput = document.getElementById('montoPrestamo')
 const tasaInteresInput = document.getElementById('tasaInteres')
 const plazoPrestamoInput = document.getElementById('plazoPrestamo')
-const pagoMensualResult = document.getElementById('pagoMensual')
+const pagoMensualResultado = document.getElementById('pagoMensual')
 
 // Agregamos un evento para realizar cálculo y guardar datos en el LocalStorage
 calcularBtn.addEventListener('click', function() {
@@ -27,8 +27,8 @@ calcularBtn.addEventListener('click', function() {
   // Calculamos la cuota del préstamo y redondeamos a un valor entero
   const cuotaMensual = Math.floor((montoPrestamo * tasaInteresDecimal) / (1 - Math.pow(1 + tasaInteresDecimal, -plazoPrestamoMeses)))
 
-  // Mostramos la cuota mensual calculada en el elemento "pagoMensualResult"
-  pagoMensualResult.textContent = cuotaMensual
+  // Mostramos la cuota mensual calculada en el elemento "pagoMensualResultado"
+  pagoMensualResultado.textContent = cuotaMensual
 
   // Guardamos los datos del préstamo en LocalStorage como JSON
   const datosPrestamo = {
@@ -48,6 +48,6 @@ calcularBtn.addEventListener('click', function() {
   // Convertimos la tasa de interés a porcentaje para mostrarla en el input
   tasaInteresInput.value = datosPrestamoGuardados.tasaInteres * 100
   plazoPrestamoInput.value = datosPrestamoGuardados.plazoPrestamo
-  pagoMensualResult.textContent = datosPrestamoGuardados.pagoMensual
+  pagoMensualResultado.textContent = datosPrestamoGuardados.pagoMensual
 }
 

@@ -9,11 +9,15 @@ document.addEventListener('DOMContentLoaded', function () {
       const motivoCredito = document.getElementById('motivoCredito').value;
       
       // Validar que los campos no estén vacíos
-      if (nombre === '' || apellido === '' || motivoCredito === '') {
-        alert('Por favor, completa todos los campos.');
-        return;
-      }
-      
+        if (nombre === '' || apellido === '' || motivoCredito === '') {
+            Swal.fire({
+            icon: 'error',
+            title: 'Campos incompletos',
+            text: 'Por favor, completa todos los campos.',
+            confirmButtonText: 'Cerrar'
+            });
+            return;
+        }
       // Mostrar una alerta SweetAlert de éxito
       Swal.fire({
         icon: 'success',

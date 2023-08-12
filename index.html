@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,6 +8,8 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200;600;900&display=swap" rel="stylesheet">
+    <!-- link de sweetalert -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   <!-- Link de mi css -->
   <link rel="stylesheet" href="./css/styles.css">
   <!-- Título de mi web -->
@@ -14,37 +17,43 @@
 </head>
 
 <body>
+  <header>
+    <nav>
+      <ul>
+        <li><a href="./pages/login.html">Login</a></li>
+        <li><a href="index.html">Calculadora</a></li>
+        <li><a href="./pages/historial.html">Historial de cotizaciones</a></li>
+      </ul>
+    </nav>
+  </header>
+
   <main>
     <!-- Enlace relativo e interno para imagen de fondo -->
     <div>
       <img class="imgBody" src="img/fondoDineroIlustrado.avif" alt="ilustración de billetes">
     </div>
-    
-    <!-- Calculadora -->
-      <div class="container">
-          <h2>Calculadora de préstamos🤑</h2>
-          <form>
-          <!-- Campo para ingresar el monto del préstamo -->
-            <label for="montoPrestamo">Monto del préstamo💲:</label>
-            <input type="number" id="montoPrestamo">
-          <!-- Campo para ingresar el plazo del préstamo -->
-            <label for="plazoPrestamo">Plazo del préstamo en meses⏰:</label>
-            <input type="number" id="plazoPrestamo">
-          <!-- Campo para ingresar la tasa de interés -->
-            <label for="tasaInteres">Tasa de interés mensual (%)🐱‍🏍:</label>
-            <input type="number" id="tasaInteres">
-          <!-- Botón para calcular la cuota mensual -->
-            <button type="button" id="calcularBtn">Calcular</button>
-          </form>
-          <!-- Se mostrará resultado de la cuota final -->
-          <div id="resultado">
-            <p>El monto a pagar mensualmente es de😏: <span id="pagoMensual"></span></p>
-          </div>
-        </div>
-  </main>
-  
-    <!-- Link de mi JavaScript -->
-    <script src="./js/script.js"></script>
 
+    <!-- Calculadora -->
+    <div class="container">
+      <h2>Calculadora de préstamos🤑</h2>
+      <form>
+        <!-- Campo para ingresar el monto del préstamo -->
+        <label for="montoPrestamo">Monto del préstamo💲:</label>
+        <input type="number" id="montoPrestamo">
+        <!-- Campo para ingresar el plazo del préstamo -->
+        <label for="plazoPrestamo">Plazo del préstamo en meses⏰:</label>
+        <input type="number" id="plazoPrestamo">
+        <!-- Campo para ingresar la tasa de interés -->
+        <label for="tasaInteres">Tasa de interés mensual (%)🐱‍🏍:</label>
+        <input type="number" id="tasaInteres">
+        <!-- Botón para calcular la cuota mensual -->
+        <button type="button" id="calcularBtn">Calcular</button>
+      </form>
+
+    </div>
+  </main>
+
+  <!-- Link de mi JavaScript -->
+  <script src="./js/script.js"></script>
 </body>
 </html>

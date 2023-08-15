@@ -1,11 +1,18 @@
 // Hacemos referencia al botón de "calcular cuota mensual"
 const calcularBtn = document.getElementById('calcularBtn');
+const borrarHistorialBtn = document.getElementById('borrarHistorialBtn');
 
 // Declaramos las variables 
 const montoPrestamoInput = document.getElementById('montoPrestamo');
 const tasaInteresInput = document.getElementById('tasaInteres');
 const plazoPrestamoInput = document.getElementById('plazoPrestamo');
 const pagoMensualResultado = document.getElementById('pagoMensual');
+
+// Variables para almacenar los valores ingresados en el formulario
+let montoPrestamo;
+let tasaInteres;
+let plazoPrestamoMeses;
+let cuotaMensual;
 
 // Función para agregar un préstamo al historial en el almacenamiento local
 function agregarPrestamoAlHistorial(prestamo) {
@@ -36,22 +43,24 @@ function cargarHistorial() {
   });
 }
 
+// Función para borrar el historial de cotizaciones
+function borrarHistorial() {
+  localStorage.removeItem('historial');
+  cargarHistorial(); // Cargar historial actualizado
+}
+
 // Invocar la función para cargar el historial al cargar la página
 document.addEventListener('DOMContentLoaded', cargarHistorial);
 
+// Agregamos un evento para borrar el historial al hacer clic en el botón
+borrarHistorialBtn.addEventListener('click', borrarHistorial);
+
 // Agregamos un evento para realizar cálculo y guardar datos en el LocalStorage
 calcularBtn.addEventListener('click', function() {
-  // Mostramos un mensaje de "calculando préstamo" usando SweetAlert
-  Swal.fire({
-    icon: 'info',
-    title: 'Estamos calculando tu préstamo',
-    showConfirmButton: false
-  });
-
   // Obtenemos valores ingresados en el formulario
-  const montoPrestamo = parseFloat(montoPrestamoInput.value);
-  const tasaInteres = parseFloat(tasaInteresInput.value);
-  const plazoPrestamoMeses = parseInt(plazoPrestamoInput.value);
+  montoPrestamo = parseFloat(montoPrestamoInput.value);
+  tasaInteres = parseFloat(tasaInteresInput.value);
+  plazoPrestamoMeses = parseInt(plazoPrestamoInput.value);
 
   // Verificamos si los valores ingresados son válidos
   if (isNaN(montoPrestamo) || isNaN(tasaInteres) || isNaN(plazoPrestamoMeses) || montoPrestamo < 0 || tasaInteres < 0 || plazoPrestamoMeses < 0) {
@@ -66,13 +75,20 @@ calcularBtn.addEventListener('click', function() {
   }
 
   // Convertimos la tasa de interés a decimal 
-  const tasaInteresDecimal = tasaInteres / 100;
+  tasaInteresDecimal = tasaInteres / 100;
+
+  // Calculamos la cuota del préstamo y redondeamos a un valor entero
+  cuotaMensual = Math.floor((montoPrestamo * tasaInteresDecimal) / (1 - Math.pow(1 + tasaInteresDecimal, -plazoPrestamoMeses)));
+
+  // Mostramos un mensaje de "calculando préstamo" usando SweetAlert
+  Swal.fire({
+    icon: 'info',
+    title: 'Estamos calculando tu préstamo',
+    showConfirmButton: false
+  });
 
   // Agregamos un retardo de 2 segundos para simular el cálculo
   setTimeout(function() {
-    // Calculamos la cuota del préstamo y redondeamos a un valor entero
-    const cuotaMensual = Math.floor((montoPrestamo * tasaInteresDecimal) / (1 - Math.pow(1 + tasaInteresDecimal, -plazoPrestamoMeses)));
-
     // Mostramos la cuota mensual calculada en un SweetAlert
     Swal.fire({
       icon: 'success',
@@ -93,13 +109,3 @@ calcularBtn.addEventListener('click', function() {
 
   }, 2000); // Retardo de 2 segundos (2000 milisegundos)
 });
-
-// Cargamos datos del préstamo almacenados en LocalStorage al recargar la página
-const datosPrestamoGuardados = JSON.parse(localStorage.getItem('datosPrestamo'));
-if (datosPrestamoGuardados) {
-  // Asignamos los datos guardados
-  montoPrestamoInput.value = datosPrestamoGuardados.montoPrestamo;
-  // Convertimos la tasa de interés a porcentaje para mostrarla en el input
-  tasaInteresInput.value = datosPrestamoGuardados.tasaInteres * 100;
-  plazoPrestamoInput.value = datosPrestamoGuardados.plazoPrestamo;
-}

@@ -1,27 +1,25 @@
-document.addEventListener('DOMContentLoaded', function () {
-  const listaPrestamos = document.querySelector('.lista-prestamos');
+// Función para cargar el historial desde el servidor
+async function cargarHistorial() {
+  try {
+    const response = await fetch('URL_DEL_ENDPOINT_DEL_HISTORIAL'); // Reemplaza con la URL real
+    const data = await response.json();
 
-  // Función para cargar y mostrar el historial de préstamos
-  async function cargarHistorial() {
-    // Limpiar la lista de préstamos
+    // Referencia al elemento de la lista en el DOM
+    const listaPrestamos = document.querySelector('.lista-prestamos');
+
+    // Limpiar contenido anterior
     listaPrestamos.innerHTML = '';
 
-    try {
-      // Obtener el historial de préstamos desde el servidor utilizando fetch
-      const response = await fetch('URL_DEL_ENDPOINT_DEL_HISTORIAL');
-      const historial = await response.json();
-
-      // Recorrer el historial y crear elementos de lista para cada préstamo
-      historial.forEach((prestamo, index) => {
-        const listItem = document.createElement('li');
-        listItem.textContent = `Préstamo ${index + 1}: Monto: $${prestamo.montoPrestamo}, Plazo: ${prestamo.plazoPrestamo} meses, Tasa: ${prestamo.tasaInteres * 100}%, Cuota: $${prestamo.pagoMensual}`;
-        listaPrestamos.appendChild(listItem);
-      });
-    } catch (error) {
-      console.error('Error al cargar el historial:', error);
-    }
+    // Iterar sobre los datos y agregar elementos a la lista
+    data.forEach(prestamo => {
+      const listItem = document.createElement('li');
+      listItem.textContent = `Monto: ${prestamo.montoPrestamo} - Plazo: ${prestamo.plazoPrestamo} meses - Tasa: ${prestamo.tasaInteres * 100}% - Cuota: ${prestamo.pagoMensual}`;
+      listaPrestamos.appendChild(listItem);
+    });
+  } catch (error) {
+    console.error('Error al cargar el historial:', error);
   }
+}
 
-  // Cargar y mostrar el historial al cargar la página
-  cargarHistorial();
-});
+// Invocar la función para cargar el historial al cargar la página
+document.addEventListener('DOMContentLoaded', cargarHistorial);

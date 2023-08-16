@@ -62,50 +62,49 @@ calcularBtn.addEventListener('click', function() {
   tasaInteres = parseFloat(tasaInteresInput.value)
   plazoPrestamoMeses = parseInt(plazoPrestamoInput.value)
 
-  // Verificamos si los valores ingresados son válidos
-  if (isNaN(montoPrestamo) || isNaN(tasaInteres) || isNaN(plazoPrestamoMeses) || montoPrestamo < 0 || tasaInteres < 0 || plazoPrestamoMeses < 0) {
-    // Si no, mostramos una alerta de error y detenemos la ejecución
-    Swal.fire({
-      icon: 'error',
-      title: 'Error',
-      text: 'Por favor, ingresa valores válidos y no negativos.',
-      confirmButtonText: 'Cerrar'
-    })
+// Verificamos si los valores ingresados son válidos
+if (isNaN(montoPrestamo) || isNaN(tasaInteres) || isNaN(plazoPrestamoMeses) || montoPrestamo < 0 || tasaInteres < 0 || plazoPrestamoMeses < 0) {
+  // Si no, mostramos una alerta de error y detenemos la ejecución
+  Swal.fire({
+    icon: 'error',
+    title: 'Error',
+    text: 'Por favor, ingresa valores válidos y no negativos.',
+    confirmButtonText: 'Cerrar'
+  })
     return
   }
 
-  // Convertimos la tasa de interés a decimal 
-  tasaInteresDecimal = tasaInteres / 100
+// Convertimos la tasa de interés a decimal 
+tasaInteresDecimal = tasaInteres / 100
 
-  // Calculamos la cuota del préstamo y redondeamos a un valor entero
-  cuotaMensual = Math.floor((montoPrestamo * tasaInteresDecimal) / (1 - Math.pow(1 + tasaInteresDecimal, -plazoPrestamoMeses)))
+// Calculamos la cuota del préstamo y redondeamos a un valor entero
+cuotaMensual = Math.floor((montoPrestamo * tasaInteresDecimal) / (1 - Math.pow(1 + tasaInteresDecimal, -plazoPrestamoMeses)))
 
-  // Mostramos un mensaje de "calculando préstamo" usando SweetAlert
+// Mostramos un mensaje de "calculando préstamo" usando SweetAlert
+Swal.fire({
+  icon: 'info',
+  title: 'Estamos calculando tu préstamo',
+  showConfirmButton: false
+})
+
+// Agregamos un retardo de 2 segundos para simular el cálculo
+setTimeout(function() {
+// Mostramos la cuota mensual calculada en un SweetAlert
   Swal.fire({
-    icon: 'info',
-    title: 'Estamos calculando tu préstamo',
-    showConfirmButton: false
-  })
+    icon: 'success',
+    title: 'Acá te dejamos tu cotización, al cerrar la podrás ver reflejada en el historial a tu derecha',
+    text: `El monto a pagar mensualmente es de: $ ${cuotaMensual}`,
+    confirmButtonText: 'Aceptar'
+})
 
-  // Agregamos un retardo de 2 segundos para simular el cálculo
-  setTimeout(function() {
-    // Mostramos la cuota mensual calculada en un SweetAlert
-    Swal.fire({
-      icon: 'success',
-      title: 'Resultado del cálculo',
-      text: `El monto a pagar mensualmente es de: ${cuotaMensual}`,
-      confirmButtonText: 'Cerrar'
-    })
-
-    // Guardamos los datos del préstamo en LocalStorage como JSON
-    const datosPrestamo = {
-      montoPrestamo,
-      tasaInteres: tasaInteresDecimal,
-      plazoPrestamo: plazoPrestamoMeses,
-      pagoMensual: cuotaMensual
-    }
-    agregarPrestamoAlHistorial(datosPrestamo)// Agrega al historial
-    cargarHistorial() // Carga historial actualizado
-
-  }, 2000) // Retardo de 2 segundos (2000 milisegundos)
+// Guardamos los datos del préstamo en LocalStorage como JSON
+const datosPrestamo = {
+  montoPrestamo,
+  tasaInteres: tasaInteresDecimal,
+  plazoPrestamo: plazoPrestamoMeses,
+  pagoMensual: cuotaMensual
+}
+agregarPrestamoAlHistorial(datosPrestamo)// Agrega al historial
+cargarHistorial() // Carga historial actualizado
+}, 2000) // Retardo de 2 segundos (2000 milisegundos)
 })

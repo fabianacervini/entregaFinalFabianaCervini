@@ -26,7 +26,7 @@ emailjs.sendForm(serviceID, templateID, this)
 Swal.fire({
   icon: 'success',
   title: 'Mensaje Enviado 😀',
-  text: 'El formulario de contacto ha sido enviado a tu correo electrónico.',
+  text: 'En breve un asesor se comunicará con vos.',
   confirmButtonText: 'Cerrar'
 })
       

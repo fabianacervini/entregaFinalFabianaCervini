@@ -30,7 +30,7 @@ function obtenerHistorial() {
 // Función para cargar el historial desde el almacenamiento local
 function cargarHistorial() {
   const historial = obtenerHistorial()
-  const listaPrestamos = document.querySelector('.lista-prestamos')
+  const listaPrestamos = document.querySelector('.listaPrestamos')
 
   // Limpiar contenido anterior
   listaPrestamos.innerHTML = ''

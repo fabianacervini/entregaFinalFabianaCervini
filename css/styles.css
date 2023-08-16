@@ -82,6 +82,9 @@ main {
 }
 
 .historial {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   background-color: #e1e1d0;
   padding: 60px;
   border-radius: 55px;
@@ -89,9 +92,15 @@ main {
   width: 600px;
   height: 600px;
   margin-left: 50px;
+  position: relative;
 }
-.lista-prestamos {
-  list-style: none;
+.listaPrestamos {
+  background-color: #b7b7a4;
+  border-radius: 10px;
+  padding: 50px;
+  margin-top: 40px;
+  width: 500px;
+  box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.1);
 }
 
 h1, h2 {
@@ -122,6 +131,8 @@ button {
   border-radius: 6px;
   cursor: pointer;
   margin-top: 20px;
+  font-size: 18px; 
+  font-family: 'Montserrat', sans-serif; 
 }
 
 button:hover {
@@ -130,5 +141,18 @@ button:hover {
 }
 
 .botonHistorial {
- margin-top: 375px;
+  position: absolute;
+  width: 550px;
+  text-align: center;
+  bottom: 50px;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 20px;
+  background-color: #6b705c;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 18px; 
+  font-family: 'Montserrat', sans-serif; 
 }

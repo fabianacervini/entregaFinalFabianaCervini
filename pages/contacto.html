@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Link de mi tipografía -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200;600;900&display=swap" rel="stylesheet">
+  <!-- Link de sweetalert -->
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <!-- Link de email.js -->
+  <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
+  <!-- Link de mi css -->
+  <link rel="stylesheet" href="../css/styles.css">
+  <!-- Título de mi web -->
+  <title>Calculín😎</title>
+</head>
+
+<body>
+  <header>
+    <!-- Menú de página web -->
+    <nav>
+      <ul>
+        <li><a href="contacto.html">Contacto</a></li>
+        <li><a href="../index.html">Inicio - Caluladora e Historial</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <!-- Enlace relativo e interno para imagen de fondo -->
+    <div>
+      <img class="imgBody" src="../img/fondoDineroIlustrado.avif" alt="ilustración de billetes">
+    </div>
+
+    <!-- Formulario de Contacto -->
+    <div class="containerContacto">
+      <h2>Formulario de Contacto</h2>
+      <form id="form">
+        <!-- Campo para ingresar nombre -->
+        <label for="nombre">Nombre:</label>
+        <input type="text" id="nombre" name="nombre" required>
+        <!-- Campo para ingresar apellido -->
+        <label for="apellido">Apellido:</label>
+        <input type="text" id="apellido" name="apellido" required>
+        <!-- Dentro del formulario de cálculo -->
+        <label for="correo">Correo electrónico:</label>
+        <input type="email" id="correo" name="correo" placeholder="Tu correo electrónico" required>
+        <!-- Campo para ingresar motivo del crédito -->
+        <label for="motivoCredito">Motivo del crédito:</label>
+        <input type="text" id="motivoCredito" name="motivoDelCrédito" required>
+        <!-- Botón para enviar el formulario -->
+        <input type="submit" id="enviarBtn" value="Enviar mensaje"></input>
+      </form>
+      <!-- Script de email.js -->
+      <script type="text/javascript"
+        src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+
+      <script type="text/javascript">
+        emailjs.init('oIAWoFkg-W611XkrB')
+      </script>
+    </div>
+  </main>
+
+  <!-- Link de mi JavaScript -->
+  <script src="../js/login.js"></script>
+
+</body>
+
+
+<!-- Script de email.js -->
+<script>
+  const btn = document.getElementById('enviarBtn');
+
+    document.getElementById('form')
+    .addEventListener('submit', function(event) {
+    event.preventDefault();
+
+    btn.value = 'Enviando...';
+
+    const serviceID = 'default_service';
+    const templateID = 'template_yc2cjgc';
+
+   emailjs.sendForm(serviceID, templateID, this)
+    .then(() => {
+      btn.value = 'Enviar mensaje';
+    }, (err) => {
+      btn.value = 'Enviar mensaje';
+      alert(JSON.stringify(err));
+    });
+});
+</script>
+
+</html>

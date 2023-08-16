@@ -59,9 +59,18 @@ main {
   height: 100%;
 }
 
-.container {
+.containerContacto {
   background-color: #b7b7a4;
-  padding: 60px;
+  padding: 40px;
+  border-radius: 55px;
+  box-shadow: 0px 20px 5px rgba(0, 0, 0, 0.1);
+  width: 630px;
+  height: 650px;
+}
+
+.containerCalculadora {
+  background-color: #b7b7a4;
+  padding: 40px;
   border-radius: 55px;
   box-shadow: 0px 20px 5px rgba(0, 0, 0, 0.1);
   width: 600px;
@@ -79,14 +88,15 @@ main {
   box-shadow: 0px 20px 5px rgba(0, 0, 0, 0.1);
   width: 600px;
   height: 600px;
-  margin-left: 50px; /* Agrega margen izquierdo para separación */
+  margin-left: 50px;
 }
 .lista-prestamos {
   list-style: none;
 }
 
-h2 {
+h1, h2 {
   text-align: center;
+  padding: 10px;
 }
 
 label {
@@ -97,7 +107,7 @@ label {
 input {
   width: 100%;
   padding: 15px;
-  margin-bottom: 12px;
+  margin-bottom: 16px;
   border: 1px solid #ccc;
   border-radius: 6px;
   outline: none;
@@ -105,15 +115,20 @@ input {
 
 button {
   width: 100%;
-  padding: 15px;
+  padding: 20px;
   background-color: #6b705c;
   color: #fff;
   border: none;
   border-radius: 6px;
   cursor: pointer;
+  margin-top: 20px;
 }
 
 button:hover {
   background-color: #ffe8d6;
   color: black;
+}
+
+.botonHistorial {
+ margin-top: 375px;
 }

@@ -8,20 +8,23 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200;600;900&display=swap" rel="stylesheet">
-  <!-- link de sweetalert -->
+  <!-- Link de sweetalert -->
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <!-- Link de email.js -->
+  <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
   <!-- Link de mi css -->
   <link rel="stylesheet" href="./css/styles.css">
   <!-- Título de mi web -->
-  <title>Calculín y Historial 😎</title>
+  <title>Calculín😎</title>
 </head>
 
 <body>
   <header>
+    <!-- Menú de página web -->
     <nav>
       <ul>
-        <li><a href="pages/login.html">Login</a></li>
-        <li><a href="index.html">Calculadora</a></li>
+        <li><a href="pages/contacto.html">Contacto</a></li>
+        <li><a href="index.html">Inicio - Caluladora e Historial</a></li>
       </ul>
     </nav>
   </header>
@@ -33,8 +36,8 @@
     </div>
 
     <!-- Calculadora -->
-    <div class="container">
-      <h2>Calculadora de préstamos🤑</h2>
+    <div class="containerCalculadora">
+      <h1>Calculadora de préstamos🤑</h1>
       <form>
         <!-- Campo para ingresar el monto del préstamo -->
         <label for="montoPrestamo">Monto del préstamo💲:</label>
@@ -46,14 +49,14 @@
         <label for="tasaInteres">Tasa de interés mensual (%)🐱‍🏍:</label>
         <input type="number" id="tasaInteres">
         <!-- Botón para calcular la cuota mensual -->
-        <button type="button" id="calcularBtn">Calcular</button>
+        <button type="button" id="calcularBtn">Calcular⌛</button>
       </form>
     </div>
 
-    <!-- Historial -->
+    <!-- Historial de caluladora -->
     <div class="historial">
-      <h2>Historial de Préstamos</h2>
-      <button id="borrarHistorialBtn">Borrar Historial</button>
+      <h2>Historico préstamos😴</h2>
+      <button id="borrarHistorialBtn" class="botonHistorial">Borrar historial😫</button>
       <ul class="lista-prestamos">
         <!-- Los elementos de préstamo serán agregados dinámicamente aquí -->
       </ul>

@@ -1,35 +1,48 @@
-document.addEventListener('DOMContentLoaded', function () {
-    const enviarBtn = document.getElementById('enviarBtn');
-    
-    enviarBtn.addEventListener('click', function () {
-      // Obtener los valores ingresados por el usuario
-      const nombre = document.getElementById('nombre').value;
-      const apellido = document.getElementById('apellido').value;
-      const tipoEmpleo = document.getElementById('tipoEmpleo').value;
-      const motivoCredito = document.getElementById('motivoCredito').value;
+// Inicializando email.js 
+emailjs.init('oIAWoFkg-W611XkrB')
+
+// Obtener el formulario y botón de envío
+const form = document.querySelector('form')
+const enviarBtn = document.getElementById('enviarBtn')
+
+// Agregar un evento al formulario para el momento del envío
+form.addEventListener('submit', function(event) {
+  event.preventDefault()
+
+  // Cambia el valor del botón a "Enviando..."
+  enviarBtn.value = 'Enviando...'
+
+  // ID del servicio y plantilla de email.js
+  const serviceID = 'service_2jfb813'
+  const templateID = 'template_yc2cjgc'
+
+  // Enviando el formulario a través de email.js
+  emailjs.sendForm(serviceID, templateID, this)
+    .then(() => {
+      // Cambia el valor del botón de nuevo
+      enviarBtn.value = 'Enviar mensaje'
       
-      // Validar que los campos no estén vacíos
-        if (nombre === '' || apellido === '' || motivoCredito === '') {
-            Swal.fire({
-            icon: 'error',
-            title: 'Campos incompletos',
-            text: 'Por favor, completa todos los campos.',
-            confirmButtonText: 'Cerrar'
-            });
-            return;
-        }
-      // Mostrar una alerta SweetAlert de éxito
+      // Muestra un mensaje de éxito
       Swal.fire({
         icon: 'success',
-        title: '¡Registro exitoso!',
-        text: 'Tu formulario ha sido enviado con éxito.',
-        confirmButtonText: 'Ok'
-      });
+        title: 'Mensaje Enviado 😀',
+        text: 'El formulario de contacto ha sido enviado a tu correo electrónico.',
+        confirmButtonText: 'Cerrar'
+      })
       
-      // Limpiar los campos del formulario
-      document.getElementById('nombre').value = '';
-      document.getElementById('apellido').value = '';
-      document.getElementById('tipoEmpleo').value = 'dependencia';
-      document.getElementById('motivoCredito').value = '';
-    });
-  });
+      // Restablece el formulario
+      form.reset()
+    })
+    .catch((error) => {
+      // Cambia el valor del botón de nuevo
+      enviarBtn.value = 'Enviar mensaje'
+      
+      // Mostrar un mensaje de error con los detalles del error
+      Swal.fire({
+        icon: 'error',
+        title: 'Error al Enviar',
+        text: `Hubo un error al enviar el formulario: ${error}`,
+        confirmButtonText: 'Cerrar'
+      })
+    })
+})

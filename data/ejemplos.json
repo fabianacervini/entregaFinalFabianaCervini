@@ -1,0 +1,5 @@
+{
+    "nombre": "Ejemplo de JSON",
+    "descripcion": "Esto es un ejemplo de datos en formato JSON.",
+    "valor": 42
+  }

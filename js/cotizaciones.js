@@ -2,7 +2,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const listaProductos = document.getElementById('productos');
 
   // Utiliza Fetch para obtener los datos del archivo JSON
-  fetch('https://fabianacervini.github.io/entregaFinalFabianaCervini/json/datos.json')
+  fetch('../json/datos.json')
       .then(response => response.json())
       .then(data => {
           // Itera a través de los datos y crea elementos HTML para mostrarlos

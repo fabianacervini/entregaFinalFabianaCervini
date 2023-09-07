@@ -1,12 +1,107 @@
 [
-    {
-      "id": 1,
-      "nombre": "Producto 1",
-      "precio": 11
-    },
-    {
-      "id": 2,
-      "nombre": "Producto 2",
-      "precio": 15
-    }
-  ]
+  {
+    "nombre": "Préstamo 1",
+    "monto": 5000,
+    "plazo": 3,
+    "tasaInteres": 100,
+    "cuota": 1762.49
+  },
+  {
+    "nombre": "Préstamo 2",
+    "monto": 5000,
+    "plazo": 6,
+    "tasaInteres": 100,
+    "cuota": 963.92
+  },
+  {
+    "nombre": "Préstamo 3",
+    "monto": 5000,
+    "plazo": 9,
+    "tasaInteres": 100,
+    "cuota": 706.61
+  },
+  {
+    "nombre": "Préstamo 4",
+    "monto": 5000,
+    "plazo": 12,
+    "tasaInteres": 100,
+    "cuota": 582.72
+  },
+  {
+    "nombre": "Préstamo 5",
+    "monto": 5000,
+    "plazo": 3,
+    "tasaInteres": 150,
+    "cuota": 1998.73
+  },
+  {
+    "nombre": "Préstamo 6",
+    "monto": 5000,
+    "plazo": 6,
+    "tasaInteres": 150,
+    "cuota": 1110.92
+  },
+  {
+    "nombre": "Préstamo 7",
+    "monto": 5000,
+    "plazo": 9,
+    "tasaInteres": 150,
+    "cuota": 825.84
+  },
+  {
+    "nombre": "Préstamo 8",
+    "monto": 5000,
+    "plazo": 12,
+    "tasaInteres": 150,
+    "cuota": 676.13
+  },
+  {
+    "nombre": "Préstamo 9",
+    "monto": 7500,
+    "plazo": 3,
+    "tasaInteres": 100,
+    "cuota": 2643.73
+  },
+  {
+    "nombre": "Préstamo 10",
+    "monto": 7500,
+    "plazo": 6,
+    "tasaInteres": 100,
+    "cuota": 1445.88
+  },
+  {
+    "nombre": "Préstamo 11",
+    "monto": 7500,
+    "plazo": 9,
+    "tasaInteres": 100,
+    "cuota": 1059.92
+  },
+  {
+    "nombre": "Préstamo 12",
+    "monto": 7500,
+    "plazo": 12,
+    "tasaInteres": 100,
+    "cuota": 874.08
+  },
+  {
+    "nombre": "Préstamo 13",
+    "monto": 7500,
+    "plazo": 3,
+    "tasaInteres": 150,
+    "cuota": 2998.10
+  },
+  {
+    "nombre": "Préstamo 14",
+    "monto": 7500,
+    "plazo": 6,
+    "tasaInteres": 150,
+    "cuota": 1666.38
+  },
+  {
+    "nombre": "Préstamo 15",
+    "monto": 7500,
+    "plazo": 9,
+    "tasaInteres": 150,
+    "cuota": 1238.76
+  }
+]

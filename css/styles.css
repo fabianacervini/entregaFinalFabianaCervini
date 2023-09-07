@@ -127,7 +127,7 @@ input {
 button {
   width: 100%;
   padding: 20px;
-  background-color: #6b705c;
+  background-color: #b7b7a4;
   color: #fff;
   border: none;
   border-radius: 6px;
@@ -157,4 +157,63 @@ button:hover {
   cursor: pointer;
   font-size: 18px; 
   font-family: 'Montserrat', sans-serif; 
+}
+
+
+/* Estilos para la página de ejemplos de cotizaciones */
+
+.mainEjemplos {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  margin-top: 100px; 
+}
+
+.h1Ejemplos {
+  font-size: 36px;
+  color: #333;
+  margin-top: 150px;
+}
+
+ul#productos {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+ul#productos li {
+  background-color: #b7b7a4;
+  border-radius: 10px;
+  padding: 25px;
+  margin: 20px;
+  box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.1);
+  width: calc(33.33% - 40px);
+  text-align: center;
+  transition: transform 0.3s;
+  position: relative;
+}
+
+ul#productos li:hover {
+  transform: scale(1.05);
+}
+
+ul#productos li::before,
+ul#productos li::after {
+  content: "";
+}
+
+ul#productos li .nombre {
+  font-weight: bold;
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+ul#productos li .monto,
+ul#productos li .plazo,
+ul#productos li .cuota {
+  font-size: 18px;
+  margin-bottom: 5px;
 }

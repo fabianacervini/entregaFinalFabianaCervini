@@ -1,21 +1,18 @@
 document.addEventListener('DOMContentLoaded', () => {
-    const resultado = document.getElementById('resultado');
-  
-    fetch('./data/ejemplos.json')
-      .then((response) => {
-        if (!response.ok) {
-          throw new Error('Network response was not ok');
-        }
-        return response.json();
+  const listaProductos = document.getElementById('productos');
+
+  // Utiliza Fetch para obtener los datos del archivo JSON
+  fetch('../datos.json')
+      .then(response => response.json())
+      .then(data => {
+          // Itera a través de los datos y crea elementos HTML para mostrarlos
+          data.forEach(producto => {
+              const li = document.createElement('li');
+              li.textContent = `${producto.nombre}: $${producto.precio}`;
+              listaProductos.appendChild(li);
+          });
       })
-      .then((data) => {
-        resultado.innerHTML = `
-          <h2>${data.nombre}</h2>
-          <p>${data.descripcion}</p>
-          <p>Valor: ${data.valor}</p>
-        `;
-      })
-      .catch((error) => {
-        console.error('Error:', error);
+      .catch(error => {
+          console.error('Error:', error);
       });
-  });
+});
